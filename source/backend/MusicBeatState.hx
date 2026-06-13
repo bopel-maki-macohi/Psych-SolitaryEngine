@@ -139,7 +139,7 @@ class MusicBeatState extends FlxState
 			return;
 		}
 
-		if(FlxTransitionableState.skipNextTransIn) FlxG.switchState(nextState);
+		if(FlxTransitionableState.skipNextTransIn) FlxG.switchState(() -> nextState);
 		else startTransition(nextState);
 		FlxTransitionableState.skipNextTransIn = false;
 	}
@@ -160,7 +160,7 @@ class MusicBeatState extends FlxState
 		if(nextState == FlxG.state)
 			CustomFadeTransition.finishCallback = function() FlxG.resetState();
 		else
-			CustomFadeTransition.finishCallback = function() FlxG.switchState(nextState);
+			CustomFadeTransition.finishCallback = function() FlxG.switchState(() -> nextState);
 	}
 
 	public static function getState():MusicBeatState {
